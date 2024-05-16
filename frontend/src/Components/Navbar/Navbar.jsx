@@ -6,7 +6,7 @@ import { HashRouter, Link } from 'react-router-dom'
 
 export const Navbar = () => {
 
-    const [menu,setMenu] = useState("accesorios")
+    const [menu,setMenu] = useState("shop")
   return (
     <div className='navbar'>
         <div className="nav-logo">

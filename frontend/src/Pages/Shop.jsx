@@ -3,7 +3,7 @@ import { Hero } from '../Components/Hero/Hero'
 
 export const Shop = () => {
   return (
-    <div>
+    <div className="shop-container">
         <Hero/>
     </div>
   )

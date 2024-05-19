@@ -3,24 +3,42 @@
     justify-content: space-around;
     padding: 16px;
     box-shadow: 0 1px 3px -2px black;
+    position: fixed;
+    width: 100%; /* Extender la Navbar al ancho completo */
+    
+    
 }
 
 .navbar-shop{
     display: flex;
     justify-content: space-around;
     padding: 16px;
-    box-shadow: 0 1px 3px -2px black;
+    box-shadow: 0 0px 0px 0px white;
     background-color: transparent; /* Fondo transparente */
     position: fixed;
-    top: 0;
     width: 100%; /* Extender la Navbar al ancho completo */
-    z-index: 1000;
-    padding: 1rem;
+    
+    
 }
-.nav-logo{
+.nav-logo-shop{
+    width: 15%;
+    height: auto;
+    filter: brightness(0) invert(1);
     display: flex;
     align-items: center;
     gap: 10px;
+    
+    
+}
+.nav-logo{
+    width: 15%;
+    height: auto;
+    
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    
+    
 }
 .nav-logo p{
     color: #171717;
@@ -32,10 +50,21 @@
     align-items: center;
     list-style: none;
     gap: 50px;
-    color: #626262;
+    color: black;
     font-size: 20px;
     font-weight: 300;
 }
+
+.nav-menu-shop{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 50px;
+    color: white;
+    font-size: 20px;
+    font-weight: 300;
+}
+
 .nav-menu li{
     display: flex;
     flex-direction: column;
@@ -43,14 +72,23 @@
     justify-content: center;
     gap: 3px;
     cursor: pointer;
+    color: black;
 }
 .nav-menu hr{
     border: none;
     width: 80%;
     height: 3px;
     border-radius: 10px;
+    background: black;
+}
+.nav-menu-shop hr{
+    border: none;
+    width: 100%;
+    height: 3px;
+    border-radius: 10px;
     background: white;
 }
+
 .nav-login-cart{
     display: flex;
     align-items: center;
@@ -81,6 +119,9 @@
     margin-left: -55px;
     border-radius: 11px;
     font-size: 14px;
-    background: #008080;
+    background: black;
     color: white;
 }
+
+
+

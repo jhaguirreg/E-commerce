@@ -4,8 +4,12 @@
     padding: 16px;
     box-shadow: 0 1px 3px -2px black;
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100%; /* Extender la Navbar al ancho completo */
-    
+    background-color: white;
+    transition: background-color 0.5s ease;
+    z-index: 1000;
     
 }
 
@@ -16,8 +20,10 @@
     box-shadow: 0 0px 0px 0px white;
     background-color: transparent; /* Fondo transparente */
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100%; /* Extender la Navbar al ancho completo */
-    
+    z-index: 1000;
     
 }
 .nav-logo-shop{
@@ -83,7 +89,7 @@
 }
 .nav-menu-shop hr{
     border: none;
-    width: 100%;
+    width: 80%;
     height: 3px;
     border-radius: 10px;
     background: white;

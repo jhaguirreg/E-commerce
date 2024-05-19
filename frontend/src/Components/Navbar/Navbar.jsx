@@ -1,33 +1,51 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Navbar.css'; 
 import logo from '../Assets/AvellanaLogo.svg';
-/*import cart_icon from '../Assets/cart_icon.png';*/
 import { Link, useLocation } from 'react-router-dom';
 import 'boxicons'
 
 export const Navbar = () => {
-    const [menu, setMenu] = useState("shop");
+    const [scrollPastPoint, setScrollPastPoint] = useState(false);
     const location = useLocation();
 
-    const navbarClass = location.pathname === '/' ? 'navbar-shop' : 'navbar';
-    const navMenu = location.pathname === '/' ? 'nav-menu-shop' : 'nav-menu';
-    const navLogo = location.pathname === '/' ? 'nav-logo-shop' : 'nav-logo';
-    const colorIcon = location.pathname === '/' ? 'white' : 'black';
+    useEffect(() => {
+        const handleScroll = () => {
+            if (location.pathname === '/' && window.scrollY > 150) {
+                setScrollPastPoint(true);
+            } else {
+                setScrollPastPoint(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [location]);
+
+    const navbarClass = location.pathname === '/' && !scrollPastPoint ? 'navbar navbar-shop' : 'navbar';
+    const navMenu = location.pathname === '/' && !scrollPastPoint ? 'nav-menu-shop' : 'nav-menu';
+    const navLogo = location.pathname === '/' && !scrollPastPoint ? 'nav-logo-shop' : 'nav-logo';
+    const colorIcon = location.pathname === '/' && !scrollPastPoint ? 'white' : 'black';
+
     return (
         <div className={navbarClass}>
             <div className={navLogo}>
                 <img src={logo} alt="" />
-                
             </div>
             <ul className={navMenu}>
-                <li onClick={() => { setMenu("shop") }}>
-                    <Link style={{ textDecoration: 'none', color:'inherit'}} to='/'>Tienda</Link>{menu === "shop" ? <hr /> : <></>}
+                <li>
+                    <Link style={{ textDecoration: 'none', color:'inherit'}} to='/'>Tienda</Link>
+                    {location.pathname === '/' && !scrollPastPoint && <hr />}
                 </li>
-                <li onClick={() => { setMenu("accesorios") }}>
-                    <Link style={{ textDecoration: 'none', color:'inherit'}} to='/accesorios'>Accesorios</Link>{menu === "accesorios" ? <hr /> : <></>}
+                <li>
+                    <Link style={{ textDecoration: 'none', color:'inherit'}} to='/accesorios'>Accesorios</Link>
+                    {location.pathname === '/accesorios' && <hr />}
                 </li>
-                <li onClick={() => { setMenu("ropa") }}>
-                    <Link style={{ textDecoration: 'none', color:'inherit'}} to='/ropa'>Ropa</Link>{menu === "ropa" ? <hr /> : <></>}
+                <li>
+                    <Link style={{ textDecoration: 'none', color:'inherit'}} to='/ropa'>Ropa</Link>
+                    {location.pathname === '/ropa' && <hr />}
                 </li>
             </ul>
             <div className="nav-login-cart">
@@ -36,6 +54,6 @@ export const Navbar = () => {
                 <div className='nav-cart-count'>0</div>
             </div>
         </div>
-    )
-}
+    );
+};
 

@@ -37,7 +37,7 @@ export const Navbar = () => {
             <ul className={navMenu}>
                 <li>
                     <Link style={{ textDecoration: 'none', color:'inherit'}} to='/'>Tienda</Link>
-                    {location.pathname === '/' && !scrollPastPoint && <hr />}
+                    {location.pathname === '/' &&  <hr />}
                 </li>
                 <li>
                     <Link style={{ textDecoration: 'none', color:'inherit'}} to='/accesorios'>Accesorios</Link>

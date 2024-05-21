@@ -24,10 +24,30 @@ export const Navbar = () => {
         };
     }, [location]);
 
-    const navbarClass = location.pathname === '/' && !scrollPastPoint ? 'navbar navbar-shop' : 'navbar';
-    const navMenu = location.pathname === '/' && !scrollPastPoint ? 'nav-menu-shop' : 'nav-menu';
-    const navLogo = location.pathname === '/' && !scrollPastPoint ? 'nav-logo-shop' : 'nav-logo';
-    const colorIcon = location.pathname === '/' && !scrollPastPoint ? 'white' : 'black';
+    
+
+    let navbarClass, navMenu, navLogo, colorIcon;
+
+    if (location.pathname === '/') {
+    if (!scrollPastPoint) {
+        navbarClass = 'navbar navbar-shop';
+        navMenu = 'nav-menu-shop';
+        navLogo = 'nav-logo-shop';
+        colorIcon = 'white';
+    } else if (location.pathname === '/'){
+        if (scrollPastPoint){
+            navbarClass = 'navbar-shop2';
+            navMenu = 'nav-menu';
+            navLogo = 'nav-logo';
+            colorIcon = 'black';
+        } 
+    }
+    } else {
+    navbarClass = 'navbar';
+    navMenu = 'nav-menu';
+    navLogo = 'nav-logo';
+    colorIcon = 'black';
+    }
 
     return (
         <div className={navbarClass}>

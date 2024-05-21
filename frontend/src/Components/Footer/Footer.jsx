@@ -16,18 +16,18 @@ export const Footer = () => {
         </ul>
         <div className="footer-social-icon">
             <div className="footer-icons-container">
-                <box-icon type='logo' name='instagram'></box-icon>
+                <box-icon type='logo' name='instagram' size='md'></box-icon>
             </div>
             <div className="footer-icons-container">
-                <box-icon name='facebook-square' type='logo' ></box-icon>
+                <box-icon name='facebook-square' type='logo' size='md'></box-icon>
             </div>
             <div className="footer-icons-container">
-                <box-icon name='whatsapp' type='logo' ></box-icon>
+                <box-icon name='whatsapp' type='logo' size='md'></box-icon>
             </div>
         </div>
         <div className="footer-copyright">
             <hr />
-            <p><box-icon name='copyright' ></box-icon>2024 Avellana ropa y accesorios. Todos los derechos reservados</p>
+            <p><box-icon name='copyright'></box-icon>2024 Avellana ropa y accesorios. Todos los derechos reservados</p>
         </div>
     </div>
   )

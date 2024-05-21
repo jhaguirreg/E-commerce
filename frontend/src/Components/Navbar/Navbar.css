@@ -3,13 +3,9 @@
     justify-content: space-around;
     padding: 16px;
     box-shadow: 0 1px 3px -2px black;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%; /* Extender la Navbar al ancho completo */
     background-color: white;
     transition: background-color 0.5s ease;
-    z-index: 1000;
+
     
 }
 
@@ -26,6 +22,21 @@
     z-index: 1000;
     
 }
+
+.navbar-shop2{
+    display: flex;
+    justify-content: space-around;
+    padding: 16px;
+    box-shadow: 0 1px 3px -2px black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; /* Extender la Navbar al ancho completo */
+    background-color: white;
+    transition: background-color 0.5s ease;
+    z-index: 1000;
+    
+}
 .nav-logo-shop{
     width: 15%;
     height: auto;
@@ -39,11 +50,10 @@
 .nav-logo{
     width: 15%;
     height: auto;
-    
     display: flex;
     align-items: center;
     gap: 10px;
-    
+    min-width: 15%;
     
 }
 .nav-logo p{

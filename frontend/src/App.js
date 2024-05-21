@@ -8,6 +8,7 @@ import { Product } from './Pages/Product';
 import { LoginSignup } from './Pages/LoginSignup';
 import { Cart } from './Pages/Cart';
 import { Footer } from './Components/Footer/Footer';
+import clothing_banner from './Components/Assets/banner_women.png'
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Shop/>}/>
         <Route path='/accesorios' element={<ShopCategory category="accesorios"/>}/>
-        <Route path='/ropa' element={<ShopCategory category="ropa"/>}/>
+        <Route path='/ropa' element={<ShopCategory banner={clothing_banner} category="ropa"/>}/>
         <Route path="/product" element={<Product/>}>
           <Route path=':productId' element={<Product/>}/>
         </Route>

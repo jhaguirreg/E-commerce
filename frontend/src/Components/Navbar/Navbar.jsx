@@ -1,12 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
 import './Navbar.css'; 
-import logo from '../Assets/AvellanaLogo.svg';
+import logo from '../Assets/AvellanaLogoNegro-02.svg';
+import logo2 from '../Assets/AvellanaLogoNegroVertical.svg';
 import { Link, useLocation } from 'react-router-dom';
 import 'boxicons'
+import { ShopContext } from '../../Context/ShopContext';
+
 
 export const Navbar = () => {
     const [scrollPastPoint, setScrollPastPoint] = useState(false);
     const location = useLocation();
+    const {getTotalCartItems} = useContext(ShopContext);
+    const menuRef = useRef();
+
+    const dropdown_toggle = (e) =>{
+        menuRef.current.classList.toggle('nav-menu-visible');
+        e.target.classList.toggle('open');
+    }
 
     useEffect(() => {
         const handleScroll = () => {
@@ -52,9 +62,15 @@ export const Navbar = () => {
     return (
         <div className={navbarClass}>
             <div className={navLogo}>
-                <img src={logo} alt="" />
+                <img src={logo} className='imageLOGOFULL'/>
+                <img src={logo2} className='imageLOGOCUT'/>
+                <box-icon name='chevron-down' size='md' color={colorIcon} onClick={dropdown_toggle} class={'nav-dropdown'} ></box-icon>
             </div>
-            <ul className={navMenu}>
+            
+            
+            
+            
+            <ul ref={menuRef} className={navMenu}>
                 <li>
                     <Link style={{ textDecoration: 'none', color:'inherit'}} to='/'>Tienda</Link>
                     {location.pathname === '/' &&  <hr />}
@@ -69,9 +85,9 @@ export const Navbar = () => {
                 </li>
             </ul>
             <div className="nav-login-cart">
-                <Link to='/login'><box-icon name='user' size='md' color={colorIcon}></box-icon></Link>
-                <Link to='/cart'><box-icon name='cart' size='md' color={colorIcon}></box-icon></Link>
-                <div className='nav-cart-count'>0</div>
+                <Link to='/login'><box-icon name='user' size='md' color={colorIcon} class={'login-icon'}></box-icon></Link>
+                <Link to='/cart'><box-icon name='cart' size='md' color={colorIcon} class={'cart-icon'}></box-icon></Link>
+                <div className='nav-cart-count'>{getTotalCartItems()}</div>
             </div>
         </div>
     );

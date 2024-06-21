@@ -1,10 +1,15 @@
 .hero {
-    background-image: url('../Assets/hero16.jpg');
+    background-image: url('../Assets/hero13.jpg');
     height: 100vh; 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex; 
     align-items: center; 
     justify-content: center; 
     color: white; 
+    padding: 20px;
+    box-sizing: border-box;
   }
 .hero-left{
     flex: 2;
@@ -63,3 +68,51 @@
 .hero-right img{
     width: 405px;
 }
+
+
+@media (max-width: 480px) {
+    .hero {
+      height: 50vh; 
+      width: 100%;
+      
+    }
+    .hero-left{
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        padding-left: 40px;
+        line-height: 1.5;
+        padding-bottom: 0vh;
+    }
+   
+    .hero-left h2 {
+      font-size: 20px; 
+    }
+  
+    .hero-left p {
+      font-size: 25px; 
+    }
+
+    .hero-latest-btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        width: 250px;
+        height: 50px;
+        border-radius: 150px;
+        margin-top: 30px;
+        background: black;
+        color: white;
+        font-size: 18px;
+        font-weight: 500;
+    }
+  
+    .hero-right {
+      margin-top: 20px; 
+    }
+
+  }
+  

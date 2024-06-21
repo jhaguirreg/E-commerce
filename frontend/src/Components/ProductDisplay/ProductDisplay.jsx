@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './ProductDisplay.css'
 import 'boxicons'
+import { ShopContext } from '../../Context/ShopContext';
 
 export const ProductDisplay = (props) => {
     const {product} = props;
+    const {addToCart} = useContext(ShopContext)
   return (
     <div className='productdisplay'>
         <div className="productdisplay-left">
@@ -44,7 +46,7 @@ export const ProductDisplay = (props) => {
                     <div>XXL</div>
                 </div>
             </div>
-            <button>Añadir al carrito</button>
+            <button onClick={()=>{addToCart(product.id)}}>Añadir al carrito</button>
             <p className='productdisplay-right-category'> <span>Categoría :</span>Mujeres, Blusas, Crop Top</p>
             <p className='productdisplay-right-category'> <span>Etiquetas :</span>Moderno</p>
         </div>

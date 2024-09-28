@@ -5,7 +5,17 @@ import remove_icon from '../Assets/cart_cross_icon.png'
 
 
 export const CartItems = () => {
-    const {getTotalCartItems, getTotalCartAmount, allProducts, cartItems, addToCart, removeFromCart } = useContext(ShopContext);
+    const {getTotalCartItems, getTotalCartAmount, allProducts, cartItems, addToCart, removeFromCart, isLoggedIn, login } = useContext(ShopContext);
+
+    const handlePayment = () => {
+        if (isLoggedIn) {
+            // Redirigir a la página de pago
+            alert("OK");
+        } else {
+            alert("Por favor, inicia sesión para proceder con el pago.");
+        }
+    };
+
   return (
     <div className='cartitems'>
         <div className="cartitems-format-main">
@@ -50,7 +60,7 @@ export const CartItems = () => {
                 <h3>Total</h3>
                 <h3>${getTotalCartAmount()}</h3>
             </div>
-            <button>PROCEDER AL PAGO</button>
+            <button onClick={handlePayment}>PROCEDER AL PAGO</button> {/* Botón depende del login */}
         </div>
         <div className="cartitems-promcode">
             <p>Si usted tiene un codigo de descuento, ingreselo aquí</p>

@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, request, jsonify
 from flask_cors import CORS  # Importa CORS
 from load_database import Data  
 
@@ -28,6 +28,40 @@ def get_products():
 
 
     return jsonify(products)
+
+@app.route('/api/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    id_clie = data.get('id_clie')
+    password = data.get('pass')
+
+    db.sql_consult(f"SELECT * FROM CLIENTE WHERE id_clie ='{id_clie}' AND pass = '{password}'")
+    user = db.result
+
+    if user:
+        return jsonify({"message": "Login exitoso", "user": user}), 200
+    else:
+        return jsonify({"message": "Credenciales incorrectas"}), 401
+
+
+@app.route('/api/cliente', methods=['POST'])
+def get_cliente():
+    data1 = request.get_json()
+    id_clie = data1.get('id_clie')
+
+    db.sql_consult(f"SELECT nombre, fecha_nac, correo, tel, dir FROM CLIENTE WHERE id_clie ='{id_clie}'")
+    
+    if db.result:
+        cliente = db.result[0]
+        return jsonify({
+            "nombre": cliente[0], 
+            "fecha_nac": cliente[1], 
+            "correo": cliente[2], 
+            "tel": cliente[3], 
+            "dir": cliente[4]
+        }), 200
+    else:
+        return jsonify({"message": "Cliente no encontrado"}), 404
 
 if __name__ == '__main__':
     app.run(debug=True)

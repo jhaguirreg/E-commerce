@@ -12,16 +12,44 @@ const getDefaultCart = (products) => {
 }
 
 const ShopContextProvider = (props) => {
+    const [isLoggedIn, setIsLoggedIn] = useState(() => {
+        const savedLoginStatus = localStorage.getItem('isLoggedIn');
+        return savedLoginStatus === 'true';  
+    });
+
+    const [idClie, setIdClie] = useState(() => {
+        const savedIdClie = localStorage.getItem('id_clie');
+        return savedIdClie ? savedIdClie : ''; 
+    });
+    
+
     const [cartItems, setCartItems] = useState({});
     const [allProducts, setAllProducts] = useState([]);
 
+    // Para iniciar sesion
+    const login = (id_clie) => {
+        setIsLoggedIn(true);
+        setIdClie(id_clie);  
+        localStorage.setItem('isLoggedIn', 'true');  
+        localStorage.setItem('id_clie', id_clie);  
+    };
+
+    // Para cerrar sesión y limpiar localStorage
+    const logout = () => {
+        setIsLoggedIn(false);
+        setIdClie('');
+        localStorage.setItem('isLoggedIn', 'false');  // Limpiar estado de login en localStorage
+        localStorage.removeItem('id_clie');  // Remover id_clie de localStorage
+    };
+
+    
     // Cargar productos desde la API
     useEffect(() => {
         const fetchProducts = async () => {
             try {
                 const response = await axios.get('http://127.0.0.1:5000/api/products');
                 setAllProducts(response.data);
-                setCartItems(getDefaultCart(response.data)); // Configurar el carrito con los productos
+                setCartItems(getDefaultCart(response.data)); 
             } catch (error) {
                 console.error("Error al cargar productos:", error);
             }
@@ -32,6 +60,7 @@ const ShopContextProvider = (props) => {
 
     const addToCart = (itemId) => {
         setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+        
     }
 
     const removeFromCart = (itemId) => {
@@ -43,7 +72,7 @@ const ShopContextProvider = (props) => {
         for (const item in cartItems) {
             if (cartItems[item] > 0) {
                 let itemInfo = allProducts.find((product) => product.id_prod === Number(item));
-                totalAmount += itemInfo.valor_venta * cartItems[item]; // Asegúrate de que este sea el campo correcto
+                totalAmount += itemInfo.valor_venta * cartItems[item]; 
             }
         }
         return totalAmount;
@@ -59,7 +88,7 @@ const ShopContextProvider = (props) => {
         return totalItem;
     }
 
-    const contextValue = { getTotalCartItems, getTotalCartAmount, allProducts, cartItems, addToCart, removeFromCart };
+    const contextValue = { getTotalCartItems, getTotalCartAmount, allProducts, cartItems, addToCart, removeFromCart, isLoggedIn, login, logout, idClie};
 
     return (
         <ShopContext.Provider value={contextValue}>

@@ -85,7 +85,7 @@ export const Navbar = () => {
                 </li>
             </ul>
             <div className="nav-login-cart">
-                <Link to='/login'><box-icon name='user' size='md' color={colorIcon} class={'login-icon'}></box-icon></Link>
+                <Link to='/loginsup'><box-icon name='user' size='md' color={colorIcon} class={'login-icon'}></box-icon></Link>
                 <Link to='/cart'><box-icon name='cart' size='md' color={colorIcon} class={'cart-icon'}></box-icon></Link>
                 <div className='nav-cart-count'>{getTotalCartItems()}</div>
             </div>

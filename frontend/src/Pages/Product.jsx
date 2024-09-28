@@ -19,8 +19,8 @@ export const Product = () => {
   return (
     <div>
       <Breadcrum product={product} />
-      <ProductDisplay product={product} />
-      <DescriptionBox />
+      <ProductDisplay productId={Number(productId)} />
+      <DescriptionBox productId={Number(productId)}/>
       <RelatedProducts />
     </div>
   );

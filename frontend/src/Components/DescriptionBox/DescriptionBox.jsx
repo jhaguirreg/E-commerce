@@ -1,7 +1,16 @@
-import React from 'react'
-import './DescriptionBox.css'
+import './DescriptionBox.css';
+import React, { useEffect, useContext } from 'react';
+import { ShopContext } from '../../Context/ShopContext';
 
-export const DescriptionBox = () => {
+export const DescriptionBox = ({productId}) => {
+  
+  const { allProducts } = useContext(ShopContext);
+    
+  const product = allProducts.find((prod) => prod.id_prod === productId);
+
+  if (!product) {
+      return <div>Error al cargar la descripción...</div>; 
+  }
   return (
     <div className='descriptionbox'>
       <div className="descriptionbox-navigator">
@@ -10,9 +19,7 @@ export const DescriptionBox = () => {
       </div>
       <div className="descriptionbox-description">
         <p>
-        El comercio electrónico implica la compra y venta de bienes y servicios en línea y, en realidad, es sólo una parte del negocio electrónico. Un negocio electrónico implica todo el proceso de gestión de una empresa en línea. En pocas palabras, es toda la actividad que se lleva a cabo con un negocio en línea.</p>
-        <p>
-          "Ecommerce" o "comercio electrónico" es el comercio de bienes y servicios en Internet.
+        {product.descri}
         </p>
       </div>
     </div>

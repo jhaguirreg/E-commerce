@@ -19,7 +19,17 @@ export const ShopCategory = (props) => {
       </div>
       <div className="shopcategory-products">
         {allProducts.map((item, i) => {
-          if (props.category === item.category) {
+                      return (
+                        <Item 
+                          key={i} 
+                          id={item.id_prod}
+                          name={item.nombre}
+                          image={item.img_url[0]}
+                          new_price={item.valor_venta}
+                        />
+                      );
+          
+          /*if (props.category === item.category) {
             return (
               <Item 
                 key={i} 
@@ -31,7 +41,7 @@ export const ShopCategory = (props) => {
             );
           } else {
             return null;
-          }
+          }*/
         })}
       </div>
       <div className="shopcategory-loadmore">

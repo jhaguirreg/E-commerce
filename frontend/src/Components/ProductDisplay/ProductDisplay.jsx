@@ -10,15 +10,15 @@ export const ProductDisplay = ({ productId }) => {
     const product = allProducts.find((prod) => prod.id_prod === productId);
 
     if (!product) {
-        return <div>Cargando producto...</div>; 
+        return <div>Error al cargar producto...</div>; 
     }
 
     return (
         <div className='productdisplay'>
             <div className="productdisplay-left">
                 <div className="productdisplay-img-list">
-                    {product.img_url.map((img, index) => (
-                        <img key={index} src={img} alt={`Imagen ${index + 1}`} />
+                    {product.img_url.map((img, i) => (
+                        <img key={i} src={img}/>
                     ))}
                 </div>
                 <div className="productdisplay-img">
@@ -36,9 +36,6 @@ export const ProductDisplay = ({ productId }) => {
                 </div>
                 <div className="productdisplay-right-prices">
                     <div className="productdisplay-right-price-new">${product.valor_venta}</div>
-                </div>
-                <div className="productdisplay-right-description">
-                    {product.descri}
                 </div>
                 <div className="productdisplay-right-size">
                     <h1>Selecciona el tamaño</h1>

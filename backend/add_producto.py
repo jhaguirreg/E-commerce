@@ -1,4 +1,5 @@
 from load_database import *
+from app import *
 
 data=Data()
 
@@ -75,7 +76,5 @@ def agregar_producto(nombre, descri, stock, valor_base):
 
 
     
-agregar_producto('ProdPacho','Prueba1 con Pacho',1,10000)
-sql="SELECT * FROM PRODUCTO"
-data.sql_consult(sql)
-data.show_result()
+agregar_producto('Los tenis de Jabes','Son unos tenis fantasticos, its de plastic, barbie barbie gay',1,10000)
+get_products()

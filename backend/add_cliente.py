@@ -1,6 +1,6 @@
-from load_data_base import *
+from load_database import *
 
-data=data()
+data=Data()
 
 def registrar_cliente(cc,nombre,passw,dia,mes,año,correo,tel,dir):
     sql=f"INSERT INTO CLIENTE VALUES ({cc},'{nombre}','{año}-{mes}-{dia}','{correo}','{tel}','{dir}','{passw}')"

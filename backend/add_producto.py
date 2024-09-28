@@ -1,6 +1,6 @@
-from load_data_base import *
+from load_database import *
 
-data=data()
+data=Data()
 
 def seleccionar_clasificacion():
     clasificaciones = ["ACCESORIO", "CONJUNTO", "INFERIOR", "SUPERIOR", "ZAPATO"]

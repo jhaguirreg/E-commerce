@@ -1,19 +1,19 @@
 import mysql.connector
 
-class data():
+class Data():
     def __init__(self) -> None:
         self.mydb = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="",
-        database="avellanadb"
+            host="localhost",
+            user="root",
+            password="",
+            database="avellanadb"
         )
-        self.mycursor=self.mydb.cursor()
-        self.result=None
+        self.mycursor = self.mydb.cursor()
+        self.result = None
 
-    def show_result(self): # Change print to yield.
+    def show_result(self):
         for it in self.result:
-            print(it)
+            print(it) # reemplazo el print
     
     def sql_consult(self, prompt):
         self.mycursor.execute(prompt)
